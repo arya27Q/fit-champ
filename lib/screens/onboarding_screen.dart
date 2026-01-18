@@ -48,7 +48,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [
-            // --- PAGEVIEW UNTUK GESER HALAMAN ---
             PageView.builder(
               controller: _pageController,
               onPageChanged: (index) {
@@ -60,14 +59,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               itemBuilder: (context, index) => _buildPageContent(index),
             ),
 
-            // --- BOTTOM CONTROLS (INDIKATOR & TOMBOL) ---
             Positioned(
               bottom: 60,
               left: 30,
               right: 30,
               child: Column(
                 children: [
-                  // Indikator Titik
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
@@ -77,7 +74,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                   const SizedBox(height: 40),
 
-                  // Tombol Get Started (Hanya muncul di slide terakhir)
+
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
                     width: double.infinity,

@@ -23,7 +23,6 @@ class ProfileScreen extends StatelessWidget {
             _buildStatsSection(),
             const SizedBox(height: 30),
 
-            // MENU INTERAKTIF
             _buildProfileMenu(
                 context,
                 Icons.settings,
@@ -62,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  // --- HEADER: FOTO DENGAN FITUR GANTI FOTO ---
+
   Widget _buildProfileHeader(BuildContext context) {
     return Center(
       child: Column(
@@ -75,7 +74,7 @@ class ProfileScreen extends StatelessWidget {
                 backgroundColor: Color(0xFF1A237E),
                 child: Icon(Icons.person, size: 80, color: Colors.white),
               ),
-              // Tombol Edit Foto Profil
+
               GestureDetector(
                 onTap: () => _showPicker(context),
                 child: const CircleAvatar(
@@ -90,7 +89,7 @@ class ProfileScreen extends StatelessWidget {
           const Text("Champ User", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF1A237E))),
           const Text("Mahasiswa & Protein Enthusiast", style: TextStyle(color: Colors.grey, fontSize: 14)),
           const SizedBox(height: 5),
-          // Tombol Edit Bio di bawah nama
+
           TextButton.icon(
             onPressed: () => _showEditProfile(context),
             icon: const Icon(Icons.edit, size: 14, color: Colors.indigo),
@@ -101,7 +100,6 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  // --- MODAL: PICKER FOTO PROFIL ---
   void _showPicker(BuildContext context) {
     showModalBottomSheet(
       context: context,

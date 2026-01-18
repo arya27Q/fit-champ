@@ -28,7 +28,6 @@ class ProteinModel {
   });
 }
 
-// 1. CHICKEN BREAST
 final chickenBreastData = ProteinModel(
   name: "Chicken Breast",
   totalProtein: "31g Protein",
@@ -52,7 +51,6 @@ final chickenBreastData = ProteinModel(
   benefits: "Sangat baik untuk pemulihan otot intensif karena rendah lemak.",
 );
 
-// 2. BOILED EGGS
 final boiledEggsData = ProteinModel(
   name: "Boiled Eggs",
   totalProtein: "12g Protein",
@@ -75,7 +73,6 @@ final boiledEggsData = ProteinModel(
   benefits: "Mengandung kolin yang bagus untuk fungsi otak dan metabolisme lemak.",
 );
 
-// 3. GRILLED FISH
 final grilledFishData = ProteinModel(
   name: "Grilled Fish",
   totalProtein: "22g Protein",
@@ -98,7 +95,6 @@ final grilledFishData = ProteinModel(
   benefits: "Asam lemak Omega-3 membantu mengurangi peradangan otot.",
 );
 
-// 4. WHEY PROTEIN
 final wheyProteinData = ProteinModel(
   name: "Whey Protein",
   totalProtein: "24g Protein",
@@ -121,7 +117,7 @@ final wheyProteinData = ProteinModel(
   benefits: "Penyerapan tercepat untuk jendela anabolik pasca latihan.",
 );
 
-// 5. GREEK YOGURT
+
 final greekYogurtData = ProteinModel(
   name: "Greek Yogurt",
   totalProtein: "10g Protein",
@@ -142,7 +138,7 @@ final greekYogurtData = ProteinModel(
   benefits: "Probiotik membantu kesehatan pencernaan.",
 );
 
-// 6. TEMPEH
+
 final tempehData = ProteinModel(
   name: "Tempeh",
   totalProtein: "19g Protein",
