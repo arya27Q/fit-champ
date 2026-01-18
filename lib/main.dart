@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/login_screen.dart';
+import 'screens/splash_screen.dart';
 
 void main() => runApp(const ProFitApp());
 
@@ -10,12 +10,12 @@ class ProFitApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Pro-Fit Tracker',
+      title: 'Champ Protein',
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: Colors.deepOrange, 
+        colorSchemeSeed: const Color(0xFF1A237E),
       ),
-      home: const LoginScreen(),
+      home: const SplashScreen(),
     );
   }
 }
