@@ -13,7 +13,7 @@ class ProFitApp extends StatelessWidget {
       title: 'Pro-Fit Tracker',
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: Colors.deepOrange, // Warna sporty
+        colorSchemeSeed: Colors.deepOrange, 
       ),
       home: const LoginScreen(),
     );

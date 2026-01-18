@@ -73,7 +73,7 @@ class _ProteinStoreScreenState extends State<ProteinStoreScreen> {
 
             const SizedBox(height: 30),
             _buildPromoBanner(),
-            const SizedBox(height: 100), // Ruang ekstra agar tidak tertutup tombol floating
+            const SizedBox(height: 100), 
           ],
         ),
       ),

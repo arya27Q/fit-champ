@@ -12,10 +12,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF0F4F8),
-      body: SingleChildScrollView( // Anti-Overflow aman
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            // --- HEADER WAVE ---
             Stack(
               children: [
                 ClipPath(
@@ -65,13 +64,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ],
             ),
 
-            // --- FORM SECTION ---
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: Column(
                 children: [
                   const SizedBox(height: 40),
-                  // Ilustrasi Sederhana dengan Icon
+
                   Icon(Icons.mark_email_read_outlined,
                       size: 100, color: const Color(0xFF3949AB).withOpacity(0.2)),
                   const SizedBox(height: 40),
@@ -80,7 +78,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
                   const SizedBox(height: 50),
 
-                  // Tombol Send Link
                   Container(
                     width: double.infinity,
                     height: 60,
@@ -104,7 +101,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                       ),
                       onPressed: () {
-                        // Tampilkan SnackBar sederhana sebagai tanda aksi berhasil
+                       
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text("Reset link has been sent to your email!")),
                         );
@@ -151,7 +148,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   }
 }
 
-// --- CLASS CLIPPER (Harus Sama dengan Login & Register) ---
 class MyClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {

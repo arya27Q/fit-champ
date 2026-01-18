@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../models/protein_data.dart'; // Pastikan path import model benar
+import '../models/protein_data.dart'; 
 
 class DetailProteinScreen extends StatelessWidget {
-  final ProteinModel data; // Kita pakai satu objek data supaya isinya dinamis
+  final ProteinModel data; 
 
   const DetailProteinScreen({
     super.key,
@@ -24,7 +24,6 @@ class DetailProteinScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 20),
 
-            // --- HERO SECTION ---
             Center(
               child: Hero(
                 tag: data.name,
@@ -63,7 +62,6 @@ class DetailProteinScreen extends StatelessWidget {
 
             const SizedBox(height: 40),
 
-            // --- MINI INFO (Kalori, Lemak, Karbo sekarang dinamis!) ---
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -78,7 +76,6 @@ class DetailProteinScreen extends StatelessWidget {
 
             const SizedBox(height: 40),
 
-            // --- HEALTH BENEFITS ---
             _buildSectionHeader("Health Benefits"),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -91,7 +88,6 @@ class DetailProteinScreen extends StatelessWidget {
 
             const SizedBox(height: 30),
 
-            // --- VITAMINS (Dinamis sesuai list di model) ---
             _buildSectionHeader("Vitamins & Minerals"),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -104,7 +100,6 @@ class DetailProteinScreen extends StatelessWidget {
 
             const SizedBox(height: 30),
 
-            // --- NUTRITION FACTS TABLE (Dinamis!) ---
             _buildSectionHeader("Nutrition Facts (per 100g)"),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -115,7 +110,6 @@ class DetailProteinScreen extends StatelessWidget {
                 ),
                 child: Table(
                   border: TableBorder.all(color: Colors.grey.shade200, width: 1, borderRadius: BorderRadius.circular(15)),
-                  // Mengambil data dari nutritionFacts di model
                   children: data.nutritionFacts.map((fact) => _buildTableRow(fact['label']!, fact['value']!)).toList(),
                 ),
               ),
@@ -123,7 +117,6 @@ class DetailProteinScreen extends StatelessWidget {
 
             const SizedBox(height: 30),
 
-            // --- PREPARATION STEPS (Dinamis!) ---
             _buildSectionHeader("Healthy Way to Prepare"),
             ...List.generate(data.preparationSteps.length, (index) {
               return _buildStepItem("${index + 1}", data.preparationSteps[index]);
@@ -138,7 +131,6 @@ class DetailProteinScreen extends StatelessWidget {
 
             const SizedBox(height: 50),
 
-            // --- TOMBOL KEMBALI ---
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: SizedBox(
@@ -165,7 +157,6 @@ class DetailProteinScreen extends StatelessWidget {
     );
   }
 
-  // --- HELPER WIDGETS ---
   TableRow _buildTableRow(String label, String value) {
     return TableRow(
       children: [

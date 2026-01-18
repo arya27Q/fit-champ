@@ -60,7 +60,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ],
             ),
 
-            // --- FORM REGISTER ---
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Column(
