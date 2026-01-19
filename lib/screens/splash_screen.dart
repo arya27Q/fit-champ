@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'onboarding_screen.dart'; // Pastikan import ini mengarah ke file onboarding
+import 'onboarding_screen.dart'; 
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,12 +13,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Navigasi otomatis setelah 3 detik
+   
     Timer(const Duration(seconds: 3), () {
       if (mounted) {
         Navigator.pushReplacement(
           context,
-          // Sekarang diarahkan ke OnboardingScreen, bukan LoginScreen lagi
+        
           MaterialPageRoute(builder: (context) => const OnboardingScreen()),
         );
       }
@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Ikon Logo Utama
+           
             const Icon(Icons.fitness_center_rounded, size: 100, color: Colors.white),
             const SizedBox(height: 20),
             const Text(
@@ -54,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             const SizedBox(height: 50),
 
-            // Efek Loading
+           
             const CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
             ),

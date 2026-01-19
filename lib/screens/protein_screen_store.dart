@@ -73,7 +73,7 @@ class _ProteinStoreScreenState extends State<ProteinStoreScreen> {
 
             const SizedBox(height: 30),
             _buildPromoBanner(),
-            const SizedBox(height: 100), 
+            const SizedBox(height: 100),
           ],
         ),
       ),
@@ -167,90 +167,92 @@ class _ProteinStoreScreenState extends State<ProteinStoreScreen> {
             builder: (BuildContext context, StateSetter setModalState) {
               return Padding(
                 padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: Container(
-                  padding: const EdgeInsets.all(25),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text("Ringkasan Pesanan", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                      const SizedBox(height: 15),
+                child: SingleChildScrollView(
+                  child: Container(
+                    padding: const EdgeInsets.all(25),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text("Ringkasan Pesanan", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 15),
 
-                      ConstrainedBox(
-                        constraints: const BoxConstraints(maxHeight: 150),
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: cart.length,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              contentPadding: EdgeInsets.zero,
-                              leading: Icon(cart[index]['icon'], color: cart[index]['color'], size: 20),
-                              title: Text(cart[index]['name'], style: const TextStyle(fontSize: 14)),
-                              trailing: Text(cart[index]['price'], style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-                            );
-                          },
+                        ConstrainedBox(
+                          constraints: const BoxConstraints(maxHeight: 150),
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: cart.length,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                contentPadding: EdgeInsets.zero,
+                                leading: Icon(cart[index]['icon'], color: cart[index]['color'], size: 20),
+                                title: Text(cart[index]['name'], style: const TextStyle(fontSize: 14)),
+                                trailing: Text(cart[index]['price'], style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                              );
+                            },
+                          ),
                         ),
-                      ),
-                      const Divider(),
+                        const Divider(),
 
-                      const Text("Kode Promo", style: TextStyle(fontWeight: FontWeight.bold)),
-                      const SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextField(
-                              controller: _promoController,
-                              decoration: InputDecoration(
-                                hintText: "Masukkan 'PROTEINWIN'...",
-                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                                contentPadding: const EdgeInsets.symmetric(horizontal: 15),
+                        const Text("Kode Promo", style: TextStyle(fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 10),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: TextField(
+                                controller: _promoController,
+                                decoration: InputDecoration(
+                                  hintText: "Masukkan 'PROTEINWIN'...",
+                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                                  contentPadding: const EdgeInsets.symmetric(horizontal: 15),
+                                ),
                               ),
                             ),
+                            const SizedBox(width: 10),
+                            ElevatedButton(
+                              onPressed: () {
+                                setModalState(() {
+                                  if (_promoController.text.toUpperCase() == "PROTEINWIN") {
+                                    _isPromoApplied = true;
+                                  }
+                                });
+                              },
+                              style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+                              child: const Text("KLAIM", style: TextStyle(color: Colors.white)),
+                            ),
+                          ],
+                        ),
+                        if (_isPromoApplied)
+                          const Padding(
+                            padding: EdgeInsets.only(top: 8.0),
+                            child: Text("Promo Berhasil: Diskon Rp 50.000 Aktif! ✅",
+                                style: TextStyle(color: Colors.green, fontSize: 12, fontWeight: FontWeight.bold)),
                           ),
-                          const SizedBox(width: 10),
-                          ElevatedButton(
-                            onPressed: () {
-                              setModalState(() {
-                                if (_promoController.text.toUpperCase() == "PROTEINWIN") {
-                                  _isPromoApplied = true;
-                                }
-                              });
+
+                        const SizedBox(height: 20),
+                        const Text("Metode Pembayaran", style: TextStyle(fontWeight: FontWeight.bold)),
+                        _paymentOption(setModalState, "GOPAY / OVO", Icons.account_balance_wallet, Colors.blue),
+                        _paymentOption(setModalState, "Transfer Bank", Icons.account_balance, Colors.indigo),
+
+                        const SizedBox(height: 25),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: selectedMethod == "" ? null : () {
+                              Navigator.pop(context);
+                              _showSuccessDialog(context);
                             },
-                            style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
-                            child: const Text("KLAIM", style: TextStyle(color: Colors.white)),
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(vertical: 18),
+                              backgroundColor: Colors.green,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                            ),
+                            child: Text(_isPromoApplied ? "KONFIRMASI BAYAR (Diskon +)" : "KONFIRMASI BAYAR",
+                                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                           ),
-                        ],
-                      ),
-                      if (_isPromoApplied)
-                        const Padding(
-                          padding: EdgeInsets.only(top: 8.0),
-                          child: Text("Promo Berhasil: Diskon Rp 50.000 Aktif! ✅",
-                              style: TextStyle(color: Colors.green, fontSize: 12, fontWeight: FontWeight.bold)),
                         ),
-
-                      const SizedBox(height: 20),
-                      const Text("Metode Pembayaran", style: TextStyle(fontWeight: FontWeight.bold)),
-                      _paymentOption(setModalState, "GOPAY / OVO", Icons.account_balance_wallet, Colors.blue),
-                      _paymentOption(setModalState, "Transfer Bank", Icons.account_balance, Colors.indigo),
-
-                      const SizedBox(height: 25),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: selectedMethod == "" ? null : () {
-                            Navigator.pop(context);
-                            _showSuccessDialog(context);
-                          },
-                          style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(vertical: 18),
-                            backgroundColor: Colors.green,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                          ),
-                          child: Text(_isPromoApplied ? "KONFIRMASI BAYAR (Diskon +)" : "KONFIRMASI BAYAR",
-                              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               );
@@ -276,27 +278,28 @@ class _ProteinStoreScreenState extends State<ProteinStoreScreen> {
       barrierDismissible: false,
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.green.withOpacity(0.1),
-                shape: BoxShape.circle,
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.green.withOpacity(0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(Icons.check_circle, color: Colors.green, size: 80),
               ),
-              child: const Icon(Icons.check_circle, color: Colors.green, size: 80),
-            ),
-            const SizedBox(height: 20),
-            const Text("Pembayaran Berhasil!", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color(0xFF1A237E))),
-            const SizedBox(height: 10),
-            Text(
-              "Hore! Berhasil memesan ${cart.length} produk via $selectedMethod. Pesanan sedang disiapkan.",
-              textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.black54),
-            ),
-          ],
+              const SizedBox(height: 20),
+              const Text("Pembayaran Berhasil!", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color(0xFF1A237E))),
+              const SizedBox(height: 10),
+              Text(
+                "Hore! Berhasil memesan ${cart.length} produk via $selectedMethod. Pesanan sedang disiapkan.",
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.black54),
+              ),
+            ],
+          ),
         ),
         actions: [
           Center(
